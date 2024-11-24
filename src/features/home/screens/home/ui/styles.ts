@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 24,
   },
-
   image: {
     height: 50,
     width: 50,
@@ -24,6 +23,15 @@ export const styles = StyleSheet.create({
     borderColor: '#321321',
     borderWidth: 1,
     borderRadius: 8,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  timeDeleteText: {
+    color: 'red',
   },
   addTimesButton: {
     marginTop: 16,

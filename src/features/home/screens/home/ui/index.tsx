@@ -18,12 +18,12 @@ interface Props {
     name: string;
     photo: string;
   };
-  times: {
-    time: string;
-  }[];
+  times: any;
+  addTime: () => void;
+  deleteTime: (index: number) => void;
 }
 
-export const HomeContainer = ({user, times}: Props) => {
+export const HomeContainer = ({user, times, addTime, deleteTime}: Props) => {
   return (
     <SafeAreaView style={styles.flex}>
       <ScrollView style={styles.container}>
@@ -33,13 +33,28 @@ export const HomeContainer = ({user, times}: Props) => {
         </View>
         <View style={styles.timesContainer}>
           {times.length > 0 ? (
-            times.map((time, index) => <Text key={index}>{time.time}</Text>)
+            times.map((time: any, index: any) => (
+              <View key={index} style={styles.timeRow}>
+                <Text>
+                  {`${new Date(time).getHours()}:${new Date(
+                    time,
+                  ).getMinutes()}`}
+                </Text>
+                <TouchableOpacity>
+                  <Text
+                    onPress={() => deleteTime(index)}
+                    style={styles.timeDeleteText}>
+                    Apagar
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))
           ) : (
             <View>
               <Text>Nenhum horário pré configurado.</Text>
             </View>
           )}
-          <TouchableOpacity style={styles.addTimesButton}>
+          <TouchableOpacity onPress={addTime} style={styles.addTimesButton}>
             <Text style={styles.addTimesButtonText}>Adicionar Horário </Text>
           </TouchableOpacity>
         </View>
