@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {HomeContainer} from './ui';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFocusEffect} from '@react-navigation/native';
+import {Alert} from 'react-native';
 
 export const HomeScreen = ({navigation}: any) => {
   const [user, setUser] = useState<any>(null);
@@ -15,6 +16,14 @@ export const HomeScreen = ({navigation}: any) => {
     const newTimes = times.filter((_: any, i: number) => i !== index);
     setTimes(newTimes);
     AsyncStorage.setItem('@patacheia-times', JSON.stringify(newTimes));
+  };
+
+  const handleNavigateToPet = () => {
+    navigation.navigate('AddPet');
+  };
+
+  const handleReleaseFeed = () => {
+    Alert.alert('Alimentação liberada');
   };
 
   useFocusEffect(() => {
@@ -37,6 +46,8 @@ export const HomeScreen = ({navigation}: any) => {
       user={user.user}
       addTime={handleAddTime}
       deleteTime={handleDeleteTime}
+      navigateToPet={handleNavigateToPet}
+      releaseFeed={handleReleaseFeed}
     />
   ) : null;
 };

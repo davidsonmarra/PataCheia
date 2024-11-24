@@ -41,14 +41,24 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   addPetButton: {
-    padding: 20,
+    padding: 15,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    position: 'absolute',
+    left: 24,
+    bottom: 24,
+    borderRadius: 8,
+  },
+  addPetButtonText: {
+    color: 'white',
+  },
+  releaseFeedButton: {
+    padding: 16,
     backgroundColor: 'blue',
     alignItems: 'center',
     position: 'absolute',
     right: 24,
     bottom: 24,
-  },
-  addPetButtonText: {
-    color: 'white',
+    borderRadius: 8,
   },
 });

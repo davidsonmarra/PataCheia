@@ -21,9 +21,18 @@ interface Props {
   times: any;
   addTime: () => void;
   deleteTime: (index: number) => void;
+  navigateToPet: () => void;
+  releaseFeed: () => void;
 }
 
-export const HomeContainer = ({user, times, addTime, deleteTime}: Props) => {
+export const HomeContainer = ({
+  user,
+  times,
+  addTime,
+  deleteTime,
+  navigateToPet,
+  releaseFeed,
+}: Props) => {
   return (
     <SafeAreaView style={styles.flex}>
       <ScrollView style={styles.container}>
@@ -59,8 +68,11 @@ export const HomeContainer = ({user, times, addTime, deleteTime}: Props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.addPetButton}>
+      <TouchableOpacity onPress={navigateToPet} style={styles.addPetButton}>
         <Text style={styles.addPetButtonText}>Add Pet</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={releaseFeed} style={styles.releaseFeedButton}>
+        <Text style={styles.addPetButtonText}>Liberar ração agora</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
