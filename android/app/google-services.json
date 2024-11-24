@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "976168498897",
+    "project_id": "patacheia",
+    "storage_bucket": "patacheia.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976168498897:android:64bbc9e002ce541a4677f0",
+        "android_client_info": {
+          "package_name": "com.patacheia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976168498897-ku68rb52elkplieeud2p0r38tupdr0rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbSMFd1oQszJNOauG3og3mX_B4ce47Tl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976168498897-ku68rb52elkplieeud2p0r38tupdr0rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
