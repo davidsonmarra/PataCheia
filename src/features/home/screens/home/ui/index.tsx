@@ -18,6 +18,10 @@ interface Props {
     name: string;
     photo: string;
   };
+  pets: {
+    base64: string;
+    name: string;
+  }[];
   times: any;
   addTime: () => void;
   deleteTime: (index: number) => void;
@@ -27,6 +31,7 @@ interface Props {
 
 export const HomeContainer = ({
   user,
+  pets,
   times,
   addTime,
   deleteTime,
@@ -66,6 +71,20 @@ export const HomeContainer = ({
           <TouchableOpacity onPress={addTime} style={styles.addTimesButton}>
             <Text style={styles.addTimesButtonText}>Adicionar Horário </Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.petsContainer}>
+          <Text>Seus Pets</Text>
+          <View style={styles.petsRow}>
+            {pets.map((pet: any, index: any) => (
+              <View key={index} style={styles.petCard}>
+                <Image
+                  style={styles.petImage}
+                  source={{uri: `data:image/jpeg;base64,${pet.base64}`}}
+                />
+                <Text>{pet.name}</Text>
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
       <TouchableOpacity onPress={navigateToPet} style={styles.addPetButton}>

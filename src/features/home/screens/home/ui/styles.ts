@@ -61,4 +61,30 @@ export const styles = StyleSheet.create({
     bottom: 24,
     borderRadius: 8,
   },
+  petsContainer: {
+    padding: 16,
+    borderColor: '#321321',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginTop: 24,
+  },
+  petsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 12,
+  },
+  petCard: {
+    width: '48%',
+    padding: 8,
+    borderColor: '#321321',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  petImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 8,
+  },
 });
