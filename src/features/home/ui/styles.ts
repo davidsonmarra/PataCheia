@@ -5,26 +5,42 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
-    paddingVertical: 32,
-    paddingHorizontal: 24,
-    justifyContent: 'space-between',
+    padding: 24,
   },
-  h1: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  text: {
-    fontSize: 16,
-  },
-  button: {
-    padding: 16,
-    backgroundColor: '#2281c0',
-    borderRadius: 8,
+  header: {
+    flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 24,
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: '600',
+
+  image: {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    marginRight: 12,
+  },
+  timesContainer: {
+    padding: 16,
+    borderColor: '#321321',
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+  addTimesButton: {
+    marginTop: 16,
+    justifyContent: 'center',
+  },
+  addTimesButtonText: {
+    textAlign: 'center',
+  },
+  addPetButton: {
+    padding: 20,
+    backgroundColor: 'blue',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 24,
+    bottom: 24,
+  },
+  addPetButtonText: {
+    color: 'white',
   },
 });
