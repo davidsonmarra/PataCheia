@@ -5,6 +5,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 GoogleSignin.configure({
   webClientId:
@@ -14,9 +15,11 @@ GoogleSignin.configure({
 export const HomeScreen = () => {
   const signIn = async () => {
     try {
+      console.log('signIn');
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
-      console.log('data', response);
+      console.log('response', response);
+      AsyncStorage.setItem('@patacheia-user', JSON.stringify(response));
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('Cancelado');
