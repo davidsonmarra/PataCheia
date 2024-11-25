@@ -1,8 +1,9 @@
 import React, {useCallback, useState} from 'react';
-import {HomeContainer} from './ui';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useFocusEffect} from '@react-navigation/native';
 import {Alert} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import {HomeContainer} from './ui';
 
 export const HomeScreen = ({navigation}: any) => {
   const [user, setUser] = useState<any>(null);
@@ -22,6 +23,28 @@ export const HomeScreen = ({navigation}: any) => {
   const handleNavigateToPet = () => {
     navigation.navigate('AddPet');
   };
+
+  const fetchData = async () => {
+    try {
+      const snapshot = await firestore().collection('cam_photos').get();
+
+      const data = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      const showSelectedDog = data.filter(
+        (item: any) => !item?.petId && item?.base64,
+      );
+
+      showSelectedDog.length > 0 &&
+        navigation.navigate('SelectedPet', {pet: showSelectedDog[0]});
+    } catch (error) {
+      console.error('Erro ao buscar dados do Firestore:', error);
+    }
+  };
+
+  fetchData();
 
   const handleReleaseFeed = async () => {
     const path =
@@ -50,8 +73,6 @@ export const HomeScreen = ({navigation}: any) => {
           const user1 = await AsyncStorage.getItem('@patacheia-user');
           const times1 = await AsyncStorage.getItem('@patacheia-times');
           const pets1 = await AsyncStorage.getItem('@patacheia-pets');
-
-          console.log('pets1', pets1);
 
           if (isActive) {
             if (user1) setUser(JSON.parse(user1).data);
