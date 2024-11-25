@@ -10,7 +10,15 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 24,
+  },
+  headerSubView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  attButtonText: {
+    color: 'blue',
   },
   image: {
     height: 50,

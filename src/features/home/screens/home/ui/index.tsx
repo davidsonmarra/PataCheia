@@ -27,6 +27,9 @@ interface Props {
   deleteTime: (index: number) => void;
   navigateToPet: () => void;
   releaseFeed: () => void;
+  navigateToPetDetails: (pet: any) => void;
+  att: () => void;
+  logout: () => void;
 }
 
 export const HomeContainer = ({
@@ -37,13 +40,23 @@ export const HomeContainer = ({
   deleteTime,
   navigateToPet,
   releaseFeed,
+  navigateToPetDetails,
+  att,
+  logout,
 }: Props) => {
   return (
     <SafeAreaView style={styles.flex}>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <Image style={styles.image} source={{uri: user.photo}} />
-          <Text>Olá, seja bem vindo {user.name}</Text>
+          <View style={styles.headerSubView}>
+            <TouchableOpacity onPress={logout}>
+              <Image style={styles.image} source={{uri: user.photo}} />
+            </TouchableOpacity>
+            <Text>Olá, {user.name}</Text>
+          </View>
+          <TouchableOpacity onPress={att}>
+            <Text style={styles.attButtonText}>Atualizar</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.timesContainer}>
           {times.length > 0 ? (
@@ -76,13 +89,16 @@ export const HomeContainer = ({
           <Text>Seus Pets</Text>
           <View style={styles.petsRow}>
             {pets.map((pet: any, index: any) => (
-              <View key={index} style={styles.petCard}>
+              <TouchableOpacity
+                onPress={() => navigateToPetDetails(pet)}
+                key={index}
+                style={styles.petCard}>
                 <Image
                   style={styles.petImage}
                   source={{uri: `data:image/jpeg;base64,${pet.base64}`}}
                 />
                 <Text>{pet.name}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </View>

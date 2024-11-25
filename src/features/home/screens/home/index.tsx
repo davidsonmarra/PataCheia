@@ -10,6 +10,15 @@ export const HomeScreen = ({navigation}: any) => {
   const [times, setTimes] = useState<any>([]);
   const [pets, setPets] = useState<any>([]);
 
+  const logout = async () => {
+    try {
+      await AsyncStorage.removeItem('@patacheia-user');
+      navigation.replace('SignIn');
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+  };
+
   const handleAddTime = () => {
     navigation.navigate('AddTime');
   };
@@ -64,6 +73,14 @@ export const HomeScreen = ({navigation}: any) => {
     }
   };
 
+  const handleNavigateToPetDetails = (pet: any) => {
+    navigation.navigate('PetDetails', {pet});
+  };
+
+  const handleAtt = () => {
+    navigation.replace('Home');
+  };
+
   useFocusEffect(
     useCallback(() => {
       let isActive = true;
@@ -101,6 +118,9 @@ export const HomeScreen = ({navigation}: any) => {
       deleteTime={handleDeleteTime}
       navigateToPet={handleNavigateToPet}
       releaseFeed={handleReleaseFeed}
+      navigateToPetDetails={handleNavigateToPetDetails}
+      att={handleAtt}
+      logout={logout}
     />
   ) : null;
 };

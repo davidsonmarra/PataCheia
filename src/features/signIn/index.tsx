@@ -12,14 +12,14 @@ GoogleSignin.configure({
     '976168498897-ku68rb52elkplieeud2p0r38tupdr0rg.apps.googleusercontent.com',
 });
 
-export const SignInScreen = () => {
+export const SignInScreen = ({navigation}: any) => {
   const signIn = async () => {
     try {
       console.log('signIn');
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
-      console.log('response', response);
       AsyncStorage.setItem('@patacheia-user', JSON.stringify(response));
+      navigation.replace('Home');
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('Cancelado');
